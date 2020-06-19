@@ -7,8 +7,8 @@ metadata:
     build-date: 2020-01-30T08:16:17.662981
     commit.image.appsody.dev/author: Nolberto Jaimes Rojas <njaimes@co.ibm.com>
     commit.image.appsody.dev/committer: Nolberto Jaimes Rojas <njaimes@co.ibm.com>
-    commit.image.appsody.dev/date: Mon May 11 16:41:15 2020 -0500
-    commit.image.appsody.dev/message: first commit
+    commit.image.appsody.dev/date: Tue May 12 14:44:33 2020 -0500
+    commit.image.appsody.dev/message: test change
     commit.stack.appsody.dev/author: kilnerm <38245247+kilnerm@users.noreply.github.com>
     commit.stack.appsody.dev/committer: GitHub <noreply@github.com>
     commit.stack.appsody.dev/contextDir: /incubator/nodejs-express
@@ -18,9 +18,9 @@ metadata:
       Express collection
     distribution-scope: public
     help: For more information visit https://github.com/sclorg/s2i-nodejs-container
-    image.opencontainers.org/created: "2020-05-11T21:47:47-05:00"
+    image.opencontainers.org/created: "2020-06-18T23:13:24-05:00"
     image.opencontainers.org/documentation: https://github.com/nolbertoj/quote-frontend
-    image.opencontainers.org/revision: 8572899360812865d6a12d94d924f21bcda5aa43-modified
+    image.opencontainers.org/revision: b54c311950bd15328d6e78af33c9b9c712be570c-modified
     image.opencontainers.org/source: https://github.com/nolbertoj/quote-frontend/tree/master
     image.opencontainers.org/url: https://github.com/nolbertoj/quote-frontend
     k8s.io/description: Node.js 10 available as container is a base platform for building
@@ -47,6 +47,7 @@ metadata:
     stack.appsody.dev/configured: docker.io/kabanero/nodejs-express:0.2
     stack.appsody.dev/created: "2020-04-21T06:50:55Z"
     stack.appsody.dev/description: Express web framework for Node.js
+    stack.appsody.dev/digest: sha256:2d0bb6bfbbd6d4e24803d18b85edab2ae3083ab716b9a26f833300715a8caa5c
     stack.appsody.dev/documentation: https://github.com/kabanero-io/collections/tree/master/incubator/nodejs-express/README.md
     stack.appsody.dev/licenses: Apache-2.0
     stack.appsody.dev/revision: 27a3254c80e6c5367a76e6099c2e18b393d15841
@@ -70,6 +71,9 @@ metadata:
 spec:
   applicationImage: dev.local/quote-frontend
   createKnativeService: false
+  env:
+  - name: BACKEND_URL
+    value: http://quote-backend:8080/quote
   expose: true
   livenessProbe:
     failureThreshold: 12
@@ -94,8 +98,5 @@ spec:
       prometheus.io/scrape: "true"
     port: 3000
     type: NodePort
-  env:
-  - name: BACKEND_URL
-    value: http://quote-backend:8080/quote
   stack: nodejs-express
   version: 1.0.0
